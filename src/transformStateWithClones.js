@@ -22,11 +22,11 @@ function transformStateWithClones(state, actions) {
     } else if (action.type === 'removeProperties') {
       for (const key of action.keysToRemove) {
         delete newState[key];
+        currentState = newState;
       }
-      currentState = newState;
     }
 
-    result.push(currentState);
+    result.push({ ...currentState });
   }
 
   return result;
